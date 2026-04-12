@@ -18,7 +18,6 @@ int	main(int argc, char **argv)
 
 	if (argc == 1)
 		return (1);
-	lst = NULL;
 	if (!check_inputs(argc, argv))
 		return (display_error());
 	lst = parse_inputs(argc, argv);
