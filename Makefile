@@ -4,8 +4,9 @@ NAME = push_swap
 CFLAGS = -Wall -Wextra -Werror
 SRC = push_swap.c \
       utils.c \
-	  input_checker.c \
-      input_parser.c
+      input_checker.c \
+      input_parser.c \
+      instructions.c
 OBJ = $(SRC:.c=.o)
 FTPRINTF_DIR = ftprintf
 FTPRINTF = $(FTPRINTF_DIR)/libftprintf.a
