@@ -3,7 +3,9 @@ MAKE = make
 NAME = push_swap
 CFLAGS = -Wall -Wextra -Werror
 SRC = push_swap.c \
-      checks.c
+      utils.c \
+	  input_checker.c \
+      input_parser.c
 OBJ = $(SRC:.c=.o)
 FTPRINTF_DIR = ftprintf
 FTPRINTF = $(FTPRINTF_DIR)/libftprintf.a

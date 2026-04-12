@@ -12,45 +12,40 @@
 
 # include "push_swap.h"
 
-static int	is_valid_characters(const char *str)
+static	int	is_a_dupe(int value, t_list *lst)
 {
-	while (*str != '\0')
+	while (lst)
 	{
-		if (*str != '+' && *str != '-' && !ft_isdigit(*str))
-			return (0);
-		str++;
+		if (value == *(int *)(lst->content))
+			return (1);
+		lst = lst->next;
 	}
-	return (1);
+	return (0);
 }
 
-static int	is_in_limit(const char *str)
+t_list	*parse_inputs(int argc, char **argv)
 {
-	int	has_sign;
-	int	len;
+	t_list	*res;
+	t_list	*lst;
+	int		*ptr;
+	int		value;
+	int		i;
 
-	has_sign = 0;
-	if (*str == '+' || *str == '-')
-		has_sign = 1;
-	len = ft_strlen(str);
-	if (len - has_sign > 10)
-		return (0);
-	else if (len - has_sign == 10)
+	res = NULL;
+	i = 0;
+	while (++i < argc)
 	{
-		return (0);
+		value = ft_atoi(argv[i]);
+		if (is_a_dupe(value, res))
+			return (ft_lstclear(&res, &free), NULL);
+		ptr = malloc(sizeof(int *)); 
+		if (!ptr)
+			return (ft_lstclear(&res, &free), NULL);
+		*ptr = value;
+		lst = ft_lstnew(ptr);
+		if (!lst)
+			return (ft_lstclear(&res, &free), NULL);
+		ft_lstadd_back(&res, lst);
 	}
-	return (1);
-}
-
-int	check_inputs(int argc, char **argv)
-{
-	int	i;
-
-	i = 1;
-	while (i < argc)
-	{
-		if (!is_valid_characters(argv[i]))
-			return (0);
-		i++;
-	}
-	return (1);
+	return (res);
 }

@@ -16,5 +16,10 @@
 # include <limits.h>
 # include "ftprintf/ft_printf.h"
 
+// input_checker.c
 int	check_inputs(int argc, char **argv);
+// input_parser.c
+t_list	*parse_inputs(int argc, char **argv);
+// utils.c
+int	display_error();
 #endif
