@@ -16,21 +16,22 @@
 # include <limits.h>
 # include "ftprintf/ft_printf.h"
 
-typedef struct s_stack{
+typedef struct s_stack
+{
 	t_list	*head;
 	t_list	*tail;
 	int		size;
-} t_stack;
+}	t_stack;
 
 // input_checker.c
 int		check_inputs(int argc, char **argv);
 // input_parser.c
 t_list	*parse_inputs(int argc, char **argv);
 // instructions.c
-void	swap(t_list **stack);
-void	push(t_list **from, t_list **to);
-void	rotate(t_list **stack);
-void	rrotate(t_list **stack);
+void	swap(t_stack **stack);
+void	push(t_stack **from, t_stack **to);
+void	rotate(t_stack **stack);
+void	rrotate(t_stack **stack);
 // instructions_wrappers.c
 // void	try_to_swap(t_list **stack_a, t_list **stack_b);
 // utils.c

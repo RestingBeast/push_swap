@@ -36,9 +36,10 @@ int	main(int argc, char **argv)
 
 	// Deleter Later
 	int i = 0;
-	push(&(stack_a->head), &(stack_b->head));
-	push(&(stack_a->head), &(stack_b->head));
-	push(&(stack_a->head), &(stack_b->head));
+	push(&(stack_a), &(stack_b));
+	push(&(stack_a), &(stack_b));
+	push(&(stack_a), &(stack_b));
+	swap(&stack_a);
 	t_list *iter = stack_a->head;
 	while (iter)
 	{
@@ -47,21 +48,23 @@ int	main(int argc, char **argv)
 	}
 	ft_printf("\n\n");
 	int j = 0;
+	rrotate(&(stack_b));
+	rotate(&(stack_b));
 	t_list *iter2 = stack_b->head;
 	while (iter2)
 	{
 		ft_printf("Lst B%d: %d\n", ++j, *(int *)(iter2->content));
 		iter2 = iter2->next;
 	}
-	// Delete Later */
 	ft_printf("\n\nStack Information\n");
 	ft_printf("Stack A->Head: %d\n", *(int *)(stack_a->head->content));
 	ft_printf("Stack A->Tail: %d\n", *(int *)(stack_a->tail->content));
 	ft_printf("Stack A->Size: %d\n", stack_a->size);
 	ft_printf("Stack B->Head: %d\n", *(int *)(stack_b->head->content));
-	ft_printf("Stack B->Tail: 0\n"); //, *(int *)(stack_b->tail->content));
+	ft_printf("Stack B->Tail: %d\n", *(int *)(stack_b->tail->content));
 	ft_printf("Stack B->Size: %d\n", stack_b->size);
-	
+	// Delete Later */
+
 	ft_lstclear(&(stack_a->head), &free);
 	free(stack_a);
 	ft_lstclear(&(stack_b->head), &free);

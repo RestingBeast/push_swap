@@ -24,45 +24,51 @@ void	swap(t_stack **stack)
 	(*stack)->head = tmp;
 }
 
-void	push(t_list **from, t_list **to)
+void	push(t_stack **from, t_stack **to)
 {
 	t_list	*tmp;
 
-	if (!from || !(*from))
+	if (!from || !((*from)->head))
 		return ;
-	tmp = (*from)->next;
-	ft_lstadd_front(to, (*from));
-	(*from) = tmp;
+	tmp = (*from)->head->next;
+	if ((*to)->head == NULL)
+		(*to)->tail = (*from)->head;
+	ft_lstadd_front(&((*to)->head), (*from)->head);
+	(*to)->size += 1;
+	(*from)->size -= 1;
+	(*from)->head = tmp;
 }
 
-void	rotate(t_list **stack)
+void	rotate(t_stack **stack)
 {
 	t_list	*head;
 	t_list	*tail;
 
-	if (!stack || !(*stack) || !((*stack)->next))
+	if (!stack || !((*stack)->head) || !((*stack)->head->next))
 		return ;
-	head = (*stack)->next;
-	tail = ft_lstlast(head);
-	tail->next = *stack;
-	(*stack)->next = NULL;
-	(*stack) = head;
+	head = (*stack)->head->next;
+	tail = (*stack)->tail;
+	tail->next = (*stack)->head;
+	(*stack)->head->next = NULL;
+	(*stack)->tail = (*stack)->head;
+	(*stack)->head = head;
 }
 
-void	rrotate(t_list **stack)
+void	rrotate(t_stack **stack)
 {
 	t_list	*head;
 	t_list	*tail;
 	t_list	*new_tail;
 
-	if (!stack || !(*stack) || !((*stack)->next))
+	if (!stack || !((*stack)->head) || !((*stack)->head->next))
 		return ;
-	head = *stack;
-	tail = ft_lstlast(head);
+	head = (*stack)->head;
+	tail = (*stack)->tail;
 	new_tail = head;
 	while (new_tail->next != tail)
 		new_tail = new_tail->next;
 	new_tail->next = NULL;
 	tail->next = head;
-	(*stack) = tail;
+	(*stack)->head = tail;
+	(*stack)->tail = new_tail;
 }
