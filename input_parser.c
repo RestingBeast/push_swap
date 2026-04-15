@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "push_swap.h"
+#include "push_swap.h"
 
 static	int	is_a_dupe(int value, t_list *lst)
 {
@@ -38,7 +38,7 @@ t_list	*parse_inputs(int argc, char **argv)
 		value = ft_atoi(argv[i]);
 		if (is_a_dupe(value, res))
 			return (ft_lstclear(&res, &free), NULL);
-		ptr = malloc(sizeof(int *)); 
+		ptr = malloc(sizeof(int *));
 		if (!ptr)
 			return (ft_lstclear(&res, &free), NULL);
 		*ptr = value;

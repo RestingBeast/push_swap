@@ -1,4 +1,16 @@
-# include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   input_checker.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kkhant-z <kkhant-z@student.42singapor      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/15 17:54:54 by kkhant-z          #+#    #+#             */
+/*   Updated: 2026/04/15 17:54:55 by kkhant-z         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
 
 static int	is_valid_characters(const char *str)
 {
@@ -17,7 +29,7 @@ static int	is_lower_than_max(char *str, const char *max)
 	int	i;
 
 	i = 0;
-	while (i < 10) // Magic Number
+	while (i < 10)
 	{
 		if (str[i] < max[i])
 			return (1);
@@ -41,7 +53,7 @@ static int	count_leading_zeroes(char *str)
 static int	is_in_limit(char *str)
 {
 	int	sign;
-	int lead_zeroes;
+	int	lead_zeroes;
 	int	len;
 
 	sign = 0;

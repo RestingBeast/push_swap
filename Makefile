@@ -6,7 +6,9 @@ SRC = push_swap.c \
       utils.c \
       input_checker.c \
       input_parser.c \
-      instructions.c
+      instructions.c \
+      instructions_wrappers.c
+
 OBJ = $(SRC:.c=.o)
 FTPRINTF_DIR = ftprintf
 FTPRINTF = $(FTPRINTF_DIR)/libftprintf.a
