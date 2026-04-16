@@ -12,26 +12,34 @@
 
 #include "push_swap.h"
 
-/*
-void	try_to_swap(t_list **stack_a, t_list **stack_b)
+void	try_to_swap(t_stack **stack_a, t_stack **stack_b)
 {
 	int	a1;
 	int	a2;
 	int	b1;
 	int	b2;
 
-	a1 = *((*stack_a)->content);
-	a2 = *((*stack_a)->next->content);
-	b1 = *((*stack_b)->content);
-	b2 = *((*stack_b)->next->content);
-	if (a1 == a2 && b1 == b2)
-	{}
-	else if(a1 == a2)
-	{}
-	else if (b1 == b2)
-	{}
+	a1 = *(int *)((*stack_a)->head->content);
+	a2 = *(int *)((*stack_a)->head->next->content);
+	b1 = *(int *)((*stack_b)->head->content);
+	b2 = *(int *)((*stack_b)->head->next->content);
+	if (a1 > a2 && b1 < b2)
+	{
+		swap(stack_a);
+		swap(stack_b);
+		ft_printf("ss\n");
+	}
+	else if (a1 > a2)
+	{
+		swap(stack_a);
+		ft_printf("sa\n");
+	}
+	else if (b1 < b2)
+	{
+		swap(stack_b);
+		ft_printf("sb\n");
+	}
 }
-*/
 
 /*
 void	try_to_rotate(void);

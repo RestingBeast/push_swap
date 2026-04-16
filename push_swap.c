@@ -12,6 +12,17 @@
 
 #include "push_swap.h"
 
+void	debug_print_stack(t_list *head)
+{
+	int	i = 0;
+	t_list *iter = head;
+	while(iter)
+	{
+		ft_printf("Lst A%d: %d\n", ++i, *(int *)(iter->content));
+		iter = iter->next;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
@@ -35,27 +46,18 @@ int	main(int argc, char **argv)
 
 
 	// Deleter Later
-	int i = 0;
 	push(&(stack_a), &(stack_b));
 	push(&(stack_a), &(stack_b));
 	push(&(stack_a), &(stack_b));
-	swap(&stack_a);
-	t_list *iter = stack_a->head;
-	while (iter)
-	{
-		ft_printf("Lst A%d: %d\n", ++i, *(int *)(iter->content));
-		iter = iter->next;
-	}
+	ft_printf("After Push\n");
+	debug_print_stack(stack_a->head);
 	ft_printf("\n\n");
-	int j = 0;
-	rrotate(&(stack_b));
-	rotate(&(stack_b));
-	t_list *iter2 = stack_b->head;
-	while (iter2)
-	{
-		ft_printf("Lst B%d: %d\n", ++j, *(int *)(iter2->content));
-		iter2 = iter2->next;
-	}
+	debug_print_stack(stack_b->head);
+	try_to_swap(&(stack_a), &(stack_b));
+	ft_printf("\n\nAfter Try to Swap\n");
+	debug_print_stack(stack_a->head);
+	ft_printf("\n\n");
+	debug_print_stack(stack_b->head);
 	ft_printf("\n\nStack Information\n");
 	ft_printf("Stack A->Head: %d\n", *(int *)(stack_a->head->content));
 	ft_printf("Stack A->Tail: %d\n", *(int *)(stack_a->tail->content));
