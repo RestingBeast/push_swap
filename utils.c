@@ -30,3 +30,17 @@ t_stack *init_stack(t_list *head, t_list *tail, int size)
 	stack->size = size;
 	return (stack);
 }
+
+int	is_sorted(t_stack *stack)
+{
+	t_list	*lst;
+
+	lst = stack->head;
+	while (lst->next)
+	{
+		if (*(int *)(lst->content) > *(int *)(lst->next->content))
+			return (0);
+		lst = lst->next;
+	}
+	return (1);
+}

@@ -23,6 +23,8 @@ typedef struct s_stack
 	int		size;
 }	t_stack;
 
+// algorithm.c
+void	sort_three(t_stack **stack);
 // input_checker.c
 int		check_inputs(int argc, char **argv);
 // input_parser.c
@@ -32,9 +34,8 @@ void	swap(t_stack **stack);
 void	push(t_stack **from, t_stack **to);
 void	rotate(t_stack **stack);
 void	rrotate(t_stack **stack);
-// instructions_wrappers.c
-void	try_to_swap(t_stack **stack_a, t_stack **stack_b);
 // utils.c
 int		display_error(void);
 t_stack	*init_stack(t_list *head, t_list *tail, int size);
-#endif
+int		is_sorted(t_stack *stack);
+#endif 

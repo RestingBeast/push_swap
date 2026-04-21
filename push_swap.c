@@ -44,7 +44,10 @@ int	main(int argc, char **argv)
 		return (display_error());
 
 
-
+	ft_printf("Is_Sorted: %d\n", is_sorted(stack_a));
+	sort_three(&stack_a);
+	debug_print_stack(stack_a->head);
+	/*
 	// Deleter Later
 	push(&(stack_a), &(stack_b));
 	push(&(stack_a), &(stack_b));
@@ -53,7 +56,6 @@ int	main(int argc, char **argv)
 	debug_print_stack(stack_a->head);
 	ft_printf("\n\n");
 	debug_print_stack(stack_b->head);
-	try_to_swap(&(stack_a), &(stack_b));
 	ft_printf("\n\nAfter Try to Swap\n");
 	debug_print_stack(stack_a->head);
 	ft_printf("\n\n");
@@ -65,7 +67,8 @@ int	main(int argc, char **argv)
 	ft_printf("Stack B->Head: %d\n", *(int *)(stack_b->head->content));
 	ft_printf("Stack B->Tail: %d\n", *(int *)(stack_b->tail->content));
 	ft_printf("Stack B->Size: %d\n", stack_b->size);
-	// Delete Later */
+	// Delete Later
+	*/
 
 	ft_lstclear(&(stack_a->head), &free);
 	free(stack_a);
