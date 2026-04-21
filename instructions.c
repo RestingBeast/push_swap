@@ -24,7 +24,7 @@ void	swap(t_stack **stack)
 	(*stack)->head = tmp;
 }
 
-void	push(t_stack **from, t_stack **to)
+void	push(t_stack **from, t_stack **to, char to_stack)
 {
 	t_list	*tmp;
 
@@ -37,6 +37,7 @@ void	push(t_stack **from, t_stack **to)
 	(*to)->size += 1;
 	(*from)->size -= 1;
 	(*from)->head = tmp;
+	ft_printf("p%c\n", to_stack);
 }
 
 void	rotate(t_stack **stack)

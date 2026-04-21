@@ -7,6 +7,8 @@ SRC = push_swap.c \
       input_checker.c \
       input_parser.c \
       instructions.c \
+      instructions_wrappers.c \
+      instructions_wrappers_2.c \
       algorithm.c
 
 OBJ = $(SRC:.c=.o)

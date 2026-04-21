@@ -18,7 +18,7 @@ void	debug_print_stack(t_list *head)
 	t_list *iter = head;
 	while(iter)
 	{
-		ft_printf("Lst A%d: %d\n", ++i, *(int *)(iter->content));
+		ft_printf("Lst %d: %d\n", ++i, *(int *)(iter->content));
 		iter = iter->next;
 	}
 }
@@ -44,19 +44,20 @@ int	main(int argc, char **argv)
 		return (display_error());
 
 
-	ft_printf("Is_Sorted: %d\n", is_sorted(stack_a));
-	sort_three(&stack_a);
-	debug_print_stack(stack_a->head);
-	/*
+	//ft_printf("Is_Sorted: %d\n", is_sorted(stack_a));
+	//sort_three(&stack_a);
+	//debug_print_stack(stack_a->head);
 	// Deleter Later
-	push(&(stack_a), &(stack_b));
-	push(&(stack_a), &(stack_b));
-	push(&(stack_a), &(stack_b));
+	push(&stack_a, &stack_b, 'b');
+	push(&stack_a, &stack_b, 'b');
+	push(&stack_a, &stack_b, 'b');
+	swap_one(&stack_a, 'a');
+	swap_one(&stack_b, 'b');
+	swap_both(&stack_a, &stack_b);
+	rrotate_one(&stack_a, 'a');
+	rrotate_one(&stack_b, 'b');
+	rrotate_both(&stack_a, &stack_b);
 	ft_printf("After Push\n");
-	debug_print_stack(stack_a->head);
-	ft_printf("\n\n");
-	debug_print_stack(stack_b->head);
-	ft_printf("\n\nAfter Try to Swap\n");
 	debug_print_stack(stack_a->head);
 	ft_printf("\n\n");
 	debug_print_stack(stack_b->head);
@@ -68,7 +69,6 @@ int	main(int argc, char **argv)
 	ft_printf("Stack B->Tail: %d\n", *(int *)(stack_b->tail->content));
 	ft_printf("Stack B->Size: %d\n", stack_b->size);
 	// Delete Later
-	*/
 
 	ft_lstclear(&(stack_a->head), &free);
 	free(stack_a);

@@ -48,7 +48,7 @@ void	sort_three(t_stack **stack)
 		rotate(stack); // should use wrapper
 	lst = (*stack)->head;
 	if (*(int *)(lst->content) > *(int *)(lst->next->content))
-		swap(stack);
+		swap(stack); // should use wrapper
 }
 
-void	try_to_sort();
+void	try_to_sort(void);
