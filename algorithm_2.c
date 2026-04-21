@@ -31,7 +31,14 @@ static int	calculate_cost_b(int index, int size)
 	return (cost_b * direction);
 }
 
-static int	calculate_cost_a(void);
+static int	calculate_cost_a(int value, t_stack **stack_a)
+{
+	int		cost_a;
+	
+	cost_a = 1;
+	
+	return (cost_a);
+}
 
 static int	calculate_total_cost(t_stack **stack_a, t_stack **stack_b)
 {
