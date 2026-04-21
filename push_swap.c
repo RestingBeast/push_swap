@@ -42,11 +42,12 @@ int	main(int argc, char **argv)
 	stack_b = init_stack(NULL, NULL, 0);
 	if (!stack_b)
 		return (display_error());
-
-
-	//ft_printf("Is_Sorted: %d\n", is_sorted(stack_a));
-	//sort_three(&stack_a);
-	//debug_print_stack(stack_a->head);
+	sort_stack(&stack_a, &stack_b);
+	ft_printf("Stack A\n");
+	debug_print_stack(stack_a->head);
+	ft_printf("\nStack B\n");
+	debug_print_stack(stack_b->head);
+	/*
 	// Deleter Later
 	push(&stack_a, &stack_b, 'b');
 	push(&stack_a, &stack_b, 'b');
@@ -69,7 +70,7 @@ int	main(int argc, char **argv)
 	ft_printf("Stack B->Tail: %d\n", *(int *)(stack_b->tail->content));
 	ft_printf("Stack B->Size: %d\n", stack_b->size);
 	// Delete Later
-
+	*/
 	ft_lstclear(&(stack_a->head), &free);
 	free(stack_a);
 	ft_lstclear(&(stack_b->head), &free);

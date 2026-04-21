@@ -24,7 +24,9 @@ typedef struct s_stack
 }	t_stack;
 
 // algorithm.c
+void	sort_two(t_stack **stack);
 void	sort_three(t_stack **stack);
+void	sort_stack(t_stack **stack_a, t_stack **stack_b);
 // input_checker.c
 int		check_inputs(int argc, char **argv);
 // input_parser.c

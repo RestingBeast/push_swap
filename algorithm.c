@@ -12,6 +12,15 @@
 
 #include "push_swap.h"
 
+void	sort_two(t_stack **stack)
+{
+	t_list	*lst;
+
+	lst = (*stack)->head;
+	if (*(int *)(lst->content) > *(int *)(lst->next->content))
+		swap_one(stack, 'a');
+}
+
 static int	find_index_of_max(t_stack **stack)
 {
 	int		max;
@@ -39,16 +48,28 @@ static int	find_index_of_max(t_stack **stack)
 void	sort_three(t_stack **stack)
 {
 	int		max_index;
-	t_list	*lst;
 
 	max_index = find_index_of_max(stack);
 	if (max_index == 1)
-		rrotate(stack); // should use wrapper
+		rrotate_one(stack, 'a');
 	else if (max_index == 0)
-		rotate(stack); // should use wrapper
-	lst = (*stack)->head;
-	if (*(int *)(lst->content) > *(int *)(lst->next->content))
-		swap(stack); // should use wrapper
+		rotate_one(stack, 'a');
+	sort_two(stack);
 }
 
-void	try_to_sort(void);
+void	sort_stack(t_stack **stack_a, t_stack **stack_b)
+{
+	if (is_sorted(*stack_a))
+		return ;
+	if ((*stack_a)->size > 3)
+	{
+		while ((*stack_a)->size > 3)
+			push(stack_a, stack_b, 'b');
+		sort_three(stack_a);
+		// push_b_to_a
+	}
+	else if ((*stack_a)->size == 3)
+		sort_three(stack_a);
+	else if ((*stack_a)->size == 2)
+		sort_two(stack_a);
+}
