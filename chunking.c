@@ -77,7 +77,7 @@ static int	prepare_for_chunking(t_stack **stack)
 	return (1);
 }
 
-int	ft_butterfly_chunk(t_stack **stack_a, t_stack **stack_b)
+int	ft_wide_chunking(t_stack **stack_a, t_stack **stack_b)
 {
 	int	i;
 	int	offset;

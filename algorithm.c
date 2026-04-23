@@ -56,7 +56,7 @@ void	sort_stack(t_stack **stack_a, t_stack **stack_b)
 		return ;
 	if ((*stack_a)->size > 3)
 	{
-		ft_butterfly_chunk(stack_a, stack_b);
+		ft_wide_chunking(stack_a, stack_b);
 		sort_three(stack_a);
 		while ((*stack_b)->size > 0)
 			do_the_turk(stack_a, stack_b);
