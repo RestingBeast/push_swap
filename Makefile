@@ -9,7 +9,10 @@ SRC = push_swap.c \
       instructions.c \
       instructions_wrappers.c \
       instructions_wrappers_2.c \
-      algorithm.c
+      algorithm.c \
+      algorithm_2.c \
+      cache.c \
+      stack.c
 
 OBJ = $(SRC:.c=.o)
 FTPRINTF_DIR = ftprintf

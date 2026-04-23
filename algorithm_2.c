@@ -12,50 +12,89 @@
 
 #include "push_swap.h"
 
-static int	calculate_cost_b(int index, int size)
+int	index_calculation(int index, int size)
 {
-	int	cost_b;
-	int	direction;
-
-	cost_b = 1;
 	if (index > size / 2)
-	{
-		cost_b += size - index;
-		direction = -1;
-	}
+		return ((size - index) * (-1));
 	else
-	{
-		cost_b += index;
-		direction = 1;
-	}
-	return (cost_b * direction);
+		return (index);
 }
 
-static int	calculate_cost_a(int value, t_stack **stack_a)
+static int	get_index_to_push(int val, t_list *lst)
 {
-	int		cost_a;
-	
-	cost_a = 1;
-	
-	return (cost_a);
-}
+	int	predecessor;
+	int	res;
+	int	i;
 
-static int	calculate_total_cost(t_stack **stack_a, t_stack **stack_b)
-{
-	int		total_cost;
-	int		best_cost;
-	int		i;
-	t_list	*lst;
-
-	best_cost = INT_MAX;
+	res = 0;
+	predecessor = 0;
 	i = 0;
+	while (lst)
+	{
+		if (val > *(int *)(lst->content) &&
+			*(int *)(lst->content) > predecessor)
+		{
+			predecessor = *(int *)(lst->content);
+			res = i + 1;
+		}
+		i++;
+		lst = lst->next;
+	}
+	return (res);
+}
+
+static int	find_pos_a(int val, t_list *lst, t_cache *cache)
+{
+	if (val < cache->min.value)
+		return (cache->min.pos);
+	else if (val > cache->max.value)
+		return (cache->max.pos + 1);
+	else
+		return (get_index_to_push(val, lst));
+}
+
+static void	push_to_slot(t_stack **stack_a, t_stack **stack_b, t_cache *cache)
+{
+	while (cache->rotation_a != 0 || cache->rotation_b != 0)
+	{
+		if (cache->rotation_a > 0 && cache->rotation_b > 0)
+			rotate_both(stack_a, stack_b);
+		else if (cache->rotation_a < 0 && cache->rotation_b < 0)
+			rrotate_both(stack_a, stack_b);
+		else if (cache->rotation_a > 0)
+			rotate_one(stack_a, 'a');
+		else if (cache->rotation_a < 0)
+			rrotate_one(stack_a, 'a');
+		else if (cache->rotation_b > 0)
+			rotate_one(stack_b, 'b');
+		else if (cache->rotation_b < 0)
+			rrotate_one(stack_b, 'b');
+		update_rotation(&(cache->rotation_a));
+		update_rotation(&(cache->rotation_b));
+	}
+	push(stack_b, stack_a, 'a');
+}
+
+void	do_the_turk(t_stack **stack_a, t_stack **stack_b)
+{
+	t_vars_turk	vars;
+	t_cache		cache;
+	t_list		*lst;
+
+	init_vars_turk(&vars);
+	init_cache(&cache, stack_a);
 	lst = (*stack_b)->head;
 	while (lst)
 	{
-		cost_b = calculate_cost_b(i++, (*stack_b)->size);
-		if (cost_b > best_cost)
-			return (0);
+		vars.value = *(int *)(lst->content);
 		lst = lst->next;
+		vars.cost_b = index_calculation((vars.i)++, (*stack_b)->size);
+		if (ft_abs(vars.cost_b) >= cache.best_cost)
+			continue ;
+		vars.cost_a = index_calculation(find_pos_a(vars.value,
+					(*stack_a)->head, &cache), (*stack_a)->size);
+		if (ft_abs(vars.cost_a - vars.cost_b) < cache.best_cost)
+			update_cache(&cache, vars.cost_a, vars.cost_b);
 	}
-	return (best_cost);
+	push_to_slot(stack_a, stack_b, &cache);
 }

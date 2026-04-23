@@ -21,40 +21,33 @@ void	sort_two(t_stack **stack)
 		swap_one(stack, 'a');
 }
 
-static int	find_index_of_max(t_stack **stack)
-{
-	int		max;
-	int		res;
-	int		i;
-	t_list	*lst;
-
-	res = 0;
-	i = 0;
-	lst = (*stack)->head;
-	max = *(int *)(lst->content);
-	while (lst)
-	{
-		if (*(int *)(lst->content) > max)
-		{
-			max = *(int *)(lst->content);
-			res = i;
-		}
-		lst = lst->next;
-		i++;
-	}
-	return (res);
-}
-
 void	sort_three(t_stack **stack)
 {
-	int		max_index;
+	t_slot	max;
 
-	max_index = find_index_of_max(stack);
-	if (max_index == 1)
+	find_slot(&max, stack, ft_max);
+	if (max.pos == 1)
 		rrotate_one(stack, 'a');
-	else if (max_index == 0)
+	else if (max.pos == 0)
 		rotate_one(stack, 'a');
 	sort_two(stack);
+}
+
+static void	rotate_to_correct_position(t_stack **stack)
+{
+	t_slot	min;
+	int		rotation;
+
+	find_slot(&min, stack, ft_min);
+	rotation = index_calculation(min.pos, (*stack)->size);
+	while (rotation != 0)
+	{
+		if (rotation > 0)
+			rotate_one(stack, 'a');
+		else if (rotation < 0)
+			rrotate_one(stack, 'a');
+		update_rotation(&rotation);
+	}
 }
 
 void	sort_stack(t_stack **stack_a, t_stack **stack_b)
@@ -66,7 +59,9 @@ void	sort_stack(t_stack **stack_a, t_stack **stack_b)
 		while ((*stack_a)->size > 3)
 			push(stack_a, stack_b, 'b');
 		sort_three(stack_a);
-		// push_b_to_a
+		while ((*stack_b)->size > 0)
+			do_the_turk(stack_a, stack_b);
+		rotate_to_correct_position(stack_a);
 	}
 	else if ((*stack_a)->size == 3)
 		sort_three(stack_a);

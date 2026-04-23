@@ -18,29 +18,27 @@ int	display_error(void)
 	return (1);
 }
 
-t_stack *init_stack(t_list *head, t_list *tail, int size)
+int	ft_abs(int n)
 {
-	t_stack *stack;
-
-	stack = malloc(sizeof(t_stack));
-	if (!stack)
-		return (NULL);
-	stack->head = head;
-	stack->tail = tail;
-	stack->size = size;
-	return (stack);
+	if (n < 0)
+		n *= -1;
+	return (n);
 }
 
-int	is_sorted(t_stack *stack)
+int	ft_min(int a, int b)
 {
-	t_list	*lst;
+	return (a < b);
+}
 
-	lst = stack->head;
-	while (lst->next)
-	{
-		if (*(int *)(lst->content) > *(int *)(lst->next->content))
-			return (0);
-		lst = lst->next;
-	}
-	return (1);
+int	ft_max(int a, int b)
+{
+	return (a > b);
+}
+
+void	update_rotation(int *rotation)
+{
+	if (*rotation > 0)
+		(*rotation)--;
+	else if (*rotation < 0)
+		(*rotation)++;
 }
