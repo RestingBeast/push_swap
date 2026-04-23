@@ -56,7 +56,11 @@ void	sort_stack(t_stack **stack_a, t_stack **stack_b)
 		return ;
 	if ((*stack_a)->size > 3)
 	{
-		ft_wide_chunking(stack_a, stack_b);
+		if (!ft_wide_chunking(stack_a, stack_b))
+		{
+			display_error();
+			return ;
+		}
 		sort_three(stack_a);
 		while ((*stack_b)->size > 0)
 			do_the_turk(stack_a, stack_b);
