@@ -27,7 +27,7 @@ static int	get_index_to_push(int val, t_list *lst)
 	int	i;
 
 	res = 0;
-	predecessor = 0;
+	predecessor = INT_MIN;
 	i = 0;
 	while (lst)
 	{

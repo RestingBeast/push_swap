@@ -51,7 +51,7 @@ void	sort_two(t_stack **stack);
 void	sort_three(t_stack **stack);
 void	sort_stack(t_stack **stack_a, t_stack **stack_b);
 void	do_the_turk(t_stack **stack_a, t_stack **stack_b);
-int	index_calculation(int index, int size);
+int		index_calculation(int index, int size);
 // cache.c
 void	init_cache(t_cache *cache, t_stack **stack);
 void	update_cache(t_cache *cache, int rotation_a, int rotation_b);

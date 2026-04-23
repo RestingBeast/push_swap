@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	debug_print_stack(t_list *head)
+/*static void	debug_print_stack(t_list *head)
 {
 	int	i = 0;
 	t_list *iter = head;
@@ -22,6 +22,7 @@ void	debug_print_stack(t_list *head)
 		iter = iter->next;
 	}
 }
+*/
 
 int	main(int argc, char **argv)
 {
@@ -43,34 +44,8 @@ int	main(int argc, char **argv)
 	if (!stack_b)
 		return (display_error());
 	sort_stack(&stack_a, &stack_b);
-	ft_printf("Stack A\n");
-	debug_print_stack(stack_a->head);
-	ft_printf("\nStack B\n");
-	debug_print_stack(stack_b->head);
-	/*
-	// Deleter Later
-	push(&stack_a, &stack_b, 'b');
-	push(&stack_a, &stack_b, 'b');
-	push(&stack_a, &stack_b, 'b');
-	swap_one(&stack_a, 'a');
-	swap_one(&stack_b, 'b');
-	swap_both(&stack_a, &stack_b);
-	rrotate_one(&stack_a, 'a');
-	rrotate_one(&stack_b, 'b');
-	rrotate_both(&stack_a, &stack_b);
-	ft_printf("After Push\n");
-	debug_print_stack(stack_a->head);
-	ft_printf("\n\n");
-	debug_print_stack(stack_b->head);
-	ft_printf("\n\nStack Information\n");
-	ft_printf("Stack A->Head: %d\n", *(int *)(stack_a->head->content));
-	ft_printf("Stack A->Tail: %d\n", *(int *)(stack_a->tail->content));
-	ft_printf("Stack A->Size: %d\n", stack_a->size);
-	ft_printf("Stack B->Head: %d\n", *(int *)(stack_b->head->content));
-	ft_printf("Stack B->Tail: %d\n", *(int *)(stack_b->tail->content));
-	ft_printf("Stack B->Size: %d\n", stack_b->size);
-	// Delete Later
-	*/
+	//ft_printf("\nStack A\n");
+	//debug_print_stack(stack_a->head);
 	ft_lstclear(&(stack_a->head), &free);
 	free(stack_a);
 	ft_lstclear(&(stack_b->head), &free);

@@ -12,9 +12,9 @@
 
 #include "push_swap.h"
 
-t_stack *init_stack(t_list *head, t_list *tail, int size)
+t_stack	*init_stack(t_list *head, t_list *tail, int size)
 {
-	t_stack *stack;
+	t_stack	*stack;
 
 	stack = malloc(sizeof(t_stack));
 	if (!stack)
