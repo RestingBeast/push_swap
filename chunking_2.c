@@ -44,9 +44,9 @@ void	push_and_rotate(t_stack **stack_a, t_stack **stack_b, int *index)
 int	get_offset(int size)
 {
 	if (size <= 100)
-		return (20);
-	else
 		return (40);
+	else
+		return (100);
 }
 
 void	normalize_stack(t_list *lst, int size, int *arr)
