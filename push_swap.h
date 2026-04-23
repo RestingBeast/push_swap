@@ -45,8 +45,6 @@ typedef struct s_vars_turk
 	int	cost_b;
 }	t_vars_turk;
 
-void	debug_print_stack(t_list *head);
-
 // algorithm.c
 void	sort_two(t_stack **stack);
 void	sort_three(t_stack **stack);

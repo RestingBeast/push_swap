@@ -12,6 +12,7 @@
 
 #include "push_swap.h"
 
+/*
 void	debug_print_stack(t_list *head)
 {
 	int	i = 0;
@@ -22,6 +23,7 @@ void	debug_print_stack(t_list *head)
 		iter = iter->next;
 	}
 }
+*/
 
 int	main(int argc, char **argv)
 {
