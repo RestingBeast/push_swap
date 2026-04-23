@@ -12,7 +12,6 @@
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# include <stdio.h>
 # include <limits.h>
 # include "ftprintf/ft_printf.h"
 
@@ -46,16 +45,24 @@ typedef struct s_vars_turk
 	int	cost_b;
 }	t_vars_turk;
 
+void	debug_print_stack(t_list *head);
+
 // algorithm.c
 void	sort_two(t_stack **stack);
 void	sort_three(t_stack **stack);
 void	sort_stack(t_stack **stack_a, t_stack **stack_b);
 void	do_the_turk(t_stack **stack_a, t_stack **stack_b);
 int		index_calculation(int index, int size);
+void	push_to_slot(t_stack **stack_a, t_stack **stack_b, t_cache *cache);
 // cache.c
 void	init_cache(t_cache *cache, t_stack **stack);
 void	update_cache(t_cache *cache, int rotation_a, int rotation_b);
 void	init_vars_turk(t_vars_turk *vars);
+// chunking.c
+int		get_offset(int size);
+void	normalize_stack(t_list *lst, int size, int *arr);
+int		ft_butterfly_chunk(t_stack **stack_a, t_stack **stack_b);
+void	push_and_rotate(t_stack **stack_a, t_stack **stack_b, int *index);
 // input_checker.c
 int		check_inputs(int argc, char **argv);
 // input_parser.c

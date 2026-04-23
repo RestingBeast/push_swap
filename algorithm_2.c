@@ -50,29 +50,9 @@ static int	find_pos_a(int val, t_list *lst, t_cache *cache)
 	else if (val > cache->max.value)
 		return (cache->max.pos + 1);
 	else
-		return (get_index_to_push(val, lst));
-}
-
-static void	push_to_slot(t_stack **stack_a, t_stack **stack_b, t_cache *cache)
-{
-	while (cache->rotation_a != 0 || cache->rotation_b != 0)
 	{
-		if (cache->rotation_a > 0 && cache->rotation_b > 0)
-			rotate_both(stack_a, stack_b);
-		else if (cache->rotation_a < 0 && cache->rotation_b < 0)
-			rrotate_both(stack_a, stack_b);
-		else if (cache->rotation_a > 0)
-			rotate_one(stack_a, 'a');
-		else if (cache->rotation_a < 0)
-			rrotate_one(stack_a, 'a');
-		else if (cache->rotation_b > 0)
-			rotate_one(stack_b, 'b');
-		else if (cache->rotation_b < 0)
-			rrotate_one(stack_b, 'b');
-		update_rotation(&(cache->rotation_a));
-		update_rotation(&(cache->rotation_b));
+		return (get_index_to_push(val, lst));
 	}
-	push(stack_b, stack_a, 'a');
 }
 
 void	do_the_turk(t_stack **stack_a, t_stack **stack_b)

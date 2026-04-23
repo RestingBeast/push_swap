@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-/*static void	debug_print_stack(t_list *head)
+void	debug_print_stack(t_list *head)
 {
 	int	i = 0;
 	t_list *iter = head;
@@ -22,7 +22,6 @@
 		iter = iter->next;
 	}
 }
-*/
 
 int	main(int argc, char **argv)
 {
@@ -44,8 +43,7 @@ int	main(int argc, char **argv)
 	if (!stack_b)
 		return (display_error());
 	sort_stack(&stack_a, &stack_b);
-	//ft_printf("\nStack A\n");
-	//debug_print_stack(stack_a->head);
+	debug_print_stack(stack_b->head);
 	ft_lstclear(&(stack_a->head), &free);
 	free(stack_a);
 	ft_lstclear(&(stack_b->head), &free);

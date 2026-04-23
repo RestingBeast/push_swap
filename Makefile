@@ -11,7 +11,10 @@ SRC = push_swap.c \
       instructions_wrappers_2.c \
       algorithm.c \
       algorithm_2.c \
+      algorithm_3.c \
       cache.c \
+      chunking.c \
+      chunking_2.c \
       stack.c
 
 OBJ = $(SRC:.c=.o)
