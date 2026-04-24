@@ -37,7 +37,8 @@ void	push(t_stack **from, t_stack **to, char to_stack)
 	(*to)->size += 1;
 	(*from)->size -= 1;
 	(*from)->head = tmp;
-	ft_printf("p%c\n", to_stack);
+	if (to_stack != 0)
+		ft_printf("p%c\n", to_stack);
 }
 
 void	rotate(t_stack **stack)
