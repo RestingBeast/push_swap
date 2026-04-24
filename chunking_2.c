@@ -44,7 +44,7 @@ void	push_and_rotate(t_stack **stack_a, t_stack **stack_b, int *index)
 int	get_offset(int size)
 {
 	if (size <= 100)
-		return (40);
+		return (20);
 	else
 		return (100);
 }

@@ -59,7 +59,7 @@ void	init_vars_turk(t_vars_turk *vars);
 // chunking.c
 int		get_offset(int size);
 void	normalize_stack(t_list *lst, int size, int *arr);
-int		ft_wide_chunking(t_stack **stack_a, t_stack **stack_b);
+int		ft_sliding_chunk(t_stack **stack_a, t_stack **stack_b);
 void	push_and_rotate(t_stack **stack_a, t_stack **stack_b, int *index);
 // input_checker.c
 int		check_inputs(int argc, char **argv);

@@ -1,8 +1,8 @@
 CC = cc
+CFLAGS = -Wall -Wextra -Werror
 MAKE = make
 NAME = push_swap
 CHECKER = checker
-CFLAGS = -Wall -Wextra -Werror
 SRC = push_swap.c \
       utils.c \
       input_checker.c \
@@ -62,4 +62,4 @@ re:	fclean all
 
 re_bonus: fclean bonus
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re re_bonus
