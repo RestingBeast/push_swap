@@ -45,3 +45,4 @@ Checker will output `OK` if the stack is sorted correctly, or `KO` if not.
 - Identifying chunking strategies
 - Helping in implementation of Turk Algorithm and Chunking
 - Debugging.
+- LoL
