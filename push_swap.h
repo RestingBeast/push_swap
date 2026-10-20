@@ -56,6 +56,7 @@ void	push_to_slot(t_stack **stack_a, t_stack **stack_b, t_cache *cache);
 void	init_cache(t_cache *cache, t_stack **stack);
 void	update_cache(t_cache *cache, int rotation_a, int rotation_b);
 void	init_vars_turk(t_vars_turk *vars);
+int		combined_cost(int rotation_a, int rotation_b);
 // chunking.c
 int		get_offset(int size);
 void	normalize_stack(t_list *lst, int size, int *arr);

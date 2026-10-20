@@ -73,7 +73,7 @@ void	do_the_turk(t_stack **stack_a, t_stack **stack_b)
 			continue ;
 		vars.cost_a = index_calculation(find_pos_a(vars.value,
 					(*stack_a)->head, &cache), (*stack_a)->size);
-		if (ft_abs(vars.cost_a - vars.cost_b) < cache.best_cost)
+		if (combined_cost(vars.cost_a, vars.cost_b) < cache.best_cost)
 			update_cache(&cache, vars.cost_a, vars.cost_b);
 	}
 	push_to_slot(stack_a, stack_b, &cache);

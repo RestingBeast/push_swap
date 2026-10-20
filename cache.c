@@ -25,7 +25,18 @@ void	update_cache(t_cache *cache, int rotation_a, int rotation_b)
 {
 	cache->rotation_a = rotation_a;
 	cache->rotation_b = rotation_b;
-	cache->best_cost = ft_abs(rotation_a - rotation_b);
+	cache->best_cost = combined_cost(rotation_a, rotation_b);
+}
+
+int	combined_cost(int rotation_a, int rotation_b)
+{
+	if ((rotation_a >= 0) == (rotation_b >= 0))
+	{
+		if (ft_abs(rotation_a) > ft_abs(rotation_b))
+			return (ft_abs(rotation_a));
+		return (ft_abs(rotation_b));
+	}
+	return (ft_abs(rotation_a) + ft_abs(rotation_b));
 }
 
 void	init_vars_turk(t_vars_turk *vars)
