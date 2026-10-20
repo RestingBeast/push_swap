@@ -3,32 +3,34 @@ CFLAGS = -Wall -Wextra -Werror
 MAKE = make
 NAME = push_swap
 CHECKER = checker
-SRC = push_swap.c \
-      utils.c \
-      input_checker.c \
-      input_parser.c \
-      instructions.c \
-      instructions_wrappers.c \
-      instructions_wrappers_2.c \
-      algorithm.c \
-      algorithm_2.c \
-      algorithm_3.c \
-      cache.c \
-      chunking.c \
-      chunking_2.c \
-      stack.c
+SRC_DIR = src
+INC_DIR = include
+SRC = $(SRC_DIR)/push_swap.c \
+      $(SRC_DIR)/utils.c \
+      $(SRC_DIR)/input_checker.c \
+      $(SRC_DIR)/input_parser.c \
+      $(SRC_DIR)/instructions.c \
+      $(SRC_DIR)/instructions_wrappers/instructions_wrappers.c \
+      $(SRC_DIR)/instructions_wrappers/instructions_wrappers_2.c \
+      $(SRC_DIR)/algorithm/algorithm.c \
+      $(SRC_DIR)/algorithm/algorithm_2.c \
+      $(SRC_DIR)/algorithm/algorithm_3.c \
+      $(SRC_DIR)/cache.c \
+      $(SRC_DIR)/chunking/chunking.c \
+      $(SRC_DIR)/chunking/chunking_2.c \
+      $(SRC_DIR)/stack.c
 OBJ = $(SRC:.c=.o)
 FTPRINTF_DIR = ftprintf
 FTPRINTF = $(FTPRINTF_DIR)/libftprintf.a
 GNL_DIR = get_next_line
-SRC_BONUS = checker_bonus.c \
-	    utils.c \
-	    input_checker.c \
-	    input_parser.c \
-	    instructions.c \
-	    stack.c \
-	    reader_bonus.c \
-	    instr_checker_bonus.c \
+SRC_BONUS = $(SRC_DIR)/checker_bonus.c \
+	    $(SRC_DIR)/utils.c \
+	    $(SRC_DIR)/input_checker.c \
+	    $(SRC_DIR)/input_parser.c \
+	    $(SRC_DIR)/instructions.c \
+	    $(SRC_DIR)/stack.c \
+	    $(SRC_DIR)/reader_bonus.c \
+	    $(SRC_DIR)/instr_checker_bonus.c \
 	    $(GNL_DIR)/get_next_line.c \
 	    $(GNL_DIR)/get_next_line_utils.c
 OBJ_BONUS = $(SRC_BONUS:.c=.o)
@@ -47,7 +49,7 @@ $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) $(FTPRINTF) -o $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I. -I$(FTPRINTF_DIR) -I$(GNL_DIR) -c $< -o $@
+	$(CC) $(CFLAGS) -I$(INC_DIR) -I$(FTPRINTF_DIR) -I$(GNL_DIR) -c $< -o $@
 
 clean:
 	rm -f $(OBJ) $(OBJ_BONUS)

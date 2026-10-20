@@ -13,8 +13,8 @@
 #ifndef CHECKER_BONUS_H
 # define CHECKER_BONUS_H
 
-# include "ftprintf/ft_printf.h"
-# include "get_next_line/get_next_line.h"
+# include "ft_printf.h"
+# include "get_next_line.h"
 
 typedef struct s_stack
 {
