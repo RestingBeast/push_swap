@@ -42,7 +42,7 @@ void	read_from_stdin(t_stack **a, t_stack **b)
 		free(line);
 		line = get_next_line(0);
 	}
-	if (is_sorted(*a))
+	if (is_sorted(*a) && (*b)->size == 0)
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");

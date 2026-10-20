@@ -81,10 +81,10 @@ Elements come back from B to A one at a time, choosing the cheapest one each tim
 After B is empty, A is rotated in the shorter direction until its minimum is on top.
 
 # Implementation Highlights
-- **Strict input validation.** Each argument must be an optional sign followed only by digits. Overflow is caught *before* conversion by comparing the digit string against `"2147483647"` / `"2147483648"`, ignoring leading zeros, so `-2147483648` is accepted and `2147483648` is rejected. Duplicates are rejected as well. Any invalid input prints `Error`.
+- **Strict input validation.** Each argument must be an optional sign followed by at least one digit and nothing else, so a lone `-` or `+` is rejected. Overflow is caught *before* conversion by comparing the digit string against `"2147483647"` / `"2147483648"`, ignoring leading zeros, so `-2147483648` is accepted and `2147483648` is rejected. Duplicates are rejected as well. Any invalid input prints `Error` to stderr.
 - **Stacks with a tail pointer.** `t_stack` keeps `head`, `tail` and `size`, so push, swap and rotate are all O(1), and size checks never need to walk the list.
 - **One instruction core for both programs.** `push_swap` and `checker` share the same `swap` / `push` / `rotate` / `rrotate` functions. The `push_swap` wrappers print each instruction. The checker calls the same functions silently, so both programs agree on how every move behaves.
-- **Bonus checker.** Reads instructions line by line with `get_next_line`, applies them, and prints `OK` / `KO`. An unknown instruction prints `Error`.
+- **Bonus checker.** Reads instructions line by line with `get_next_line`, applies them, and prints `OK` only if stack a is sorted and stack b is empty, otherwise `KO`. An unknown instruction prints `Error` to stderr.
 - **Built on my own libraries.** Output goes through my `ft_printf` (with `libft`) and input comes from my `get_next_line`, both from earlier 42 projects.
 - **Norm-compliant.** The code follows the 42 Norm (≤ 25 lines per function, ≤ 4 parameters, etc.), which is why the algorithm is split across `algorithm*.c`, `chunking*.c` and `cache.c`.
 

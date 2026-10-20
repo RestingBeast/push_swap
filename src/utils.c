@@ -14,7 +14,7 @@
 
 int	display_error(void)
 {
-	ft_printf("Error\n");
+	write(2, "Error\n", 6);
 	return (1);
 }
 

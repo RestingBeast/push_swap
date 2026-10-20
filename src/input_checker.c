@@ -14,12 +14,15 @@
 
 static int	is_valid_characters(const char *str)
 {
-	if (*str != '+' && *str != '-' && !ft_isdigit(*str))
+	if (*str == '+' || *str == '-')
+		str++;
+	if (!ft_isdigit(*str))
 		return (0);
-	while (*(++str) != '\0')
+	while (*str != '\0')
 	{
 		if (!ft_isdigit(*str))
 			return (0);
+		str++;
 	}
 	return (1);
 }

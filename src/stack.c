@@ -51,6 +51,8 @@ int	is_sorted(t_stack *stack)
 	t_list	*lst;
 
 	lst = stack->head;
+	if (!lst)
+		return (1);
 	while (lst->next)
 	{
 		if (*(int *)(lst->content) > *(int *)(lst->next->content))
