@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker_bonus.h"
+#include "bonus.h"
 
 int	ft_strequal(char *s1, const char *s2)
 {

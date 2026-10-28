@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker_bonus.h"
+#include "bonus.h"
 
 /*
 void	debug_print_stack(t_list *head)
